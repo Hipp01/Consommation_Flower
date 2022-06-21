@@ -1,17 +1,3 @@
----
-jupyter:
-  jupytext:
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.3'
-      jupytext_version: 1.13.8
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
----
-
 # PJI Mesure de la consommation énergétique de Flower
 
 ```python
@@ -106,6 +92,14 @@ serveur = pd.read_csv("tensorflow_cifar10/result_server.csv",';', usecols=['dura
 graphes(client, serveur)
 ```
 
+La Moyenne d'énergie dépensée par le client 1 est de : 9,178,604.5 Joules  
+La Moyenne d'énergie dépensée par le client 2 est de : 9,179,156.65 Joules  
+La Moyenne d'énergie dépensée par le serveur est de : 10,202,084.67 Joules
+
+![](Graphes/1.png)
+
+![](Graphes/1_fit.png)
+
 Ci-dessus c'est l'outil **Tensorflow** qui est utilisé avec le dataset **Cifar10**.
 
 On peut voir que la moyenne de consommation pour les clients est d'environ 9 MJ, et pour le serveur de 10 MJ.
@@ -123,6 +117,15 @@ serveur = pd.read_csv("tensorflow_cifar10/result_server.csv",';', usecols=['dura
 graphes(client,serveur)
 ```
 
+La Moyenne d'énergie dépensée par le client 1 est de : 4,273,741.15 Joules  
+La Moyenne d'énergie dépensée par le client 2 est de : 4,275,103.97 Joules  
+La Moyenne d'énergie dépensée par le serveur est de : 4,593,659.91 Joules
+
+![](Graphes/2.png)
+
+![](Graphes/2_fit.png)
+
+
 On peut observer que la consommation a largement réduit. La moyenne est passée de 9 MJ à 4,27 MJ côté client, et 10 MJ à 4,59 MJ côté serveur.
 
 Le nombre de classes influe donc sur la consommation énergétique.
@@ -137,6 +140,14 @@ serveur = pd.read_csv("tensorflow_cifar10/result_server.csv",';', usecols=['dura
 graphes(client,serveur)
 ```
 
+La Moyenne d'énergie dépensée par le client 1 est de : 1,750,852.17 Joules  
+La Moyenne d'énergie dépensée par le client 2 est de : 1,754,853.9 Joules  
+La Moyenne d'énergie dépensée par le serveur est de : 2,071,664.03 Joules
+
+![](Graphes/3.png)
+
+![](Graphes/3_fit.png)
+
 On voit ici aussi que la consommation à nettement baissée, la moyenne passe de 9 MJ à 1,75 MJ côté client et 10 MJ à 2 MJ côté serveur.
 
 
@@ -148,6 +159,14 @@ serveur = pd.read_csv("tensorflow_cifar10/result_server.csv",';', usecols=['dura
 
 graphes(client,serveur)
 ```
+
+La Moyenne d'énergie dépensée par le client 1 est de : 1,604,047.33 Joules  
+La Moyenne d'énergie dépensée par le client 2 est de : 1,605,386.65 Joules  
+La Moyenne d'énergie dépensée par le serveur est de : 1,933,608.05 Joules
+
+![](Graphes/4.png)
+
+![](Graphes/4_fit.png)
 
 Pour ce dernier test, on constate que la consommation fluctue énormément des deux côtés. Les deux courbes se suivent mais la consommation du serveur reste toujours plus élevée. La moyenne diminue quand même et passe de 9 MJ à 1,6 MJ pour les clients, et de 10 MJ à 1,9 MJ pour le serveur.
 
@@ -165,6 +184,14 @@ serveur = pd.read_csv("pytorch_cifar10/result_server.csv",';', usecols=['duratio
 graphes(client,serveur)
 ```
 
+La Moyenne d'énergie dépensée par le client 1 est de : 28,852,192.15 Joules  
+La Moyenne d'énergie dépensée par le client 2 est de : 28,774,760.89 Joules  
+La Moyenne d'énergie dépensée par le serveur est de : 29,255,704.75 Joules
+
+![](Graphes/5.png)
+
+![](Graphes/5_fit.png)
+
 On note ici que la consommation est beaucoup plus élevée que pour Tensorflow, la moyenne du client est de 28,85 MJ, et celle du serveur est de 29,25 MJ. Les courbes sont presque identiques.
 
 
@@ -177,6 +204,14 @@ serveur = pd.read_csv("pytorch_cifar10/result_server.csv",';', usecols=['duratio
 graphes(client,serveur)
 ```
 
+La Moyenne d'énergie dépensée par le client 1 est de : 49,278,128.72 Joules  
+La Moyenne d'énergie dépensée par le client 2 est de : 48,861,239.77 Joules  
+La Moyenne d'énergie dépensée par le serveur est de : 49,791,327.67 Joules
+
+![](Graphes/6.png)
+
+![](Graphes/6_fit.png)
+
 On constate ici aussi que la consommation est beaucoup plus élevée, la moyenne passe à 49 MJ pour les clients et le serveur.
 
 
@@ -188,6 +223,14 @@ serveur = pd.read_csv("pytorch_cifar10/result_server.csv",';', usecols=['duratio
 
 graphes(client,serveur)
 ```
+
+La Moyenne d'énergie dépensée par le client 1 est de : 18,236,460.57 Joules  
+La Moyenne d'énergie dépensée par le client 2 est de : 18,143,500.96 Joules  
+La Moyenne d'énergie dépensée par le serveur est de : 18,695,297.11 Joules
+
+![](Graphes/7.png)
+
+![](Graphes/7_fit.png)
 
 Ici la consommation énergétique diminue très fortement par rapport aux essais précédents. La moyenne est maintenant d'environ 18 MJ.
 
@@ -212,8 +255,6 @@ def graphes2(client1, client2, serveur):
     # CLients
     y_client1 = list(df_client1['uncore_0'])
     y_client2 = list(df_client2['uncore_0'])
-    
-    print(len(y_client1),len(y_client2),len(tours))
     
     fit_client1_params = np.polyfit(tours, y_client1, 4)
     fit_client1 = np.poly1d(fit_client1_params)
@@ -283,6 +324,14 @@ serveur = pd.read_csv("tensorflow_mnist/result_server.csv",';', usecols=['durati
 graphes2(client1, client2, serveur)
 ```
 
+La Moyenne d'énergie dépensée par le client 1 est de : 625,809.29 Joules  
+La Moyenne d'énergie dépensée par le client 2 est de : 627,023.04 Joules  
+La Moyenne d'énergie dépensée par le serveur est de : 1,543,416.89 Joules
+
+![](Graphes/8.png)
+
+![](Graphes/8_fit.png)
+
 La consommation est ici largement inférieure aux précédentes,la moyenne des clients est de 626 kJ, et celle du serveur est de 1.5 MJ. La consommation du serveur est deux fois plus élevée que celle des clients, mais reste convenable par rapport aux précédents tests.
 
 
@@ -296,6 +345,14 @@ serveur = pd.read_csv("tensorflow_mnist/result_server.csv",';', usecols=['durati
 
 graphes2(client1, client2, serveur)
 ```
+
+La Moyenne d'énergie dépensée par le client 1 est de : 856,421.1 Joules  
+La Moyenne d'énergie dépensée par le client 2 est de : 854,122.58 Joules  
+La Moyenne d'énergie dépensée par le serveur est de : 1,343,491.68 Joules
+
+![](Graphes/9.png)
+
+![](Graphes/9_fit.png)
 
 On constate ici aussi que la consommation fluctue beaucoup, mais reste dans le même ordre de grandeur. La moyenne des clients est de 855 kJ, et 1.34 MJ pour le serveur.  
 Cest résultats sont très corrects grâce au dataset **mnist**, on peut noter une faible consommation énergétique en comparaison avec le dataset **cifar10**.
@@ -312,6 +369,14 @@ serveur = pd.read_csv("mxnet_gluon/result_server.csv",';', usecols=['duration','
 
 graphes(client, serveur)
 ```
+
+La Moyenne d'énergie dépensée par le client 1 est de : 782,021.27 Joules  
+La Moyenne d'énergie dépensée par le client 2 est de : 771,245.02 Joules  
+La Moyenne d'énergie dépensée par le serveur est de : 936,926.55 Joules
+
+![](Graphes/10.png)
+
+![](Graphes/10_fit.png)
 
 Cette configuration est très peu énergivore aussi, on note que la moyenne des clients est de 776 kJ, et 936 kJ pour le serveur.
 
@@ -334,7 +399,3 @@ Et si on modifie le **batch_size**, c'est à ce moment là que la consommation d
 
 
 <div style="text-align:right;"><strong>Larzul Hippolyte</strong></div>
-
-```python
-
-```
